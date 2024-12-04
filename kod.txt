@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Exploration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle at 50% 50%, #000428, #004e92);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 1em 0;
+            background: #000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+
+        nav {
+            background: #222;
+            padding: 1em 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1.5em;
+            transition: color 0.3s;
+            font-size: 1.2em;
+        }
+
+        nav a:hover {
+            color: #ffa500;
+        }
+
+        section {
+            padding: 4em 1em;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .planet {
+            margin: 3em 0;
+        }
+
+        .planet canvas {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .planet canvas:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px rgba(255, 165, 0, 0.7);
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            pointer-events: none;
+            z-index: 10;
+            font-size: 1em;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 2em auto;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        footer {
+            padding: 2em 0;
+            background: #000;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Solar System</h1>
+    </header>
+    <nav>
+        <a href="#sun">Sun</a>
+        <a href="#mercury">Mercury</a>
+        <a href="#venus">Venus</a>
+        <a href="#earth">Earth</a>
+        <a href="#mars">Mars</a>
+        <a href="#jupiter">Jupiter</a>
+        <a href="#saturn">Saturn</a>
+        <a href="#uranus">Uranus</a>
+        <a href="#neptune">Neptune</a>
+    </nav>
+    <main>
+        <section id="sun" class="planet">
+            <h2>The Sun</h2>
+            <canvas id="sunCanvas"></canvas>
+            <div class="tooltip" id="sunTooltip">The Sun is the star at the center of our solar system...</div>
+            <p class="description">The Sun is a nearly perfect sphere of hot plasma and the most important source of energy for life on Earth...</p>
+        </section>
+        <section id="mercury" class="planet">
+            <h2>Mercury</h2>
+            <canvas id="mercuryCanvas"></canvas>
+            <div class="tooltip" id="mercuryTooltip">Mercury is the closest planet to the Sun and the smallest planet in our solar system...</div>
+            <p class="description">Mercury has a very thin atmosphere and experiences extreme temperatures due to its proximity to the Sun...</p>
+        </section>
+        <section id="venus" class="planet">
+            <h2>Venus</h2>
+            <canvas id="venusCanvas"></canvas>
+            <div class="tooltip" id="venusTooltip">Venus is the second planet from the Sun and has a thick, toxic atmosphere...</div>
+            <p class="description">Venus is often called Earth's sister planet because of their similar size and composition...</p>
+        </section>
+        <section id="earth" class="planet">
+            <h2>Earth</h2>
+            <canvas id="earthCanvas"></canvas>
+            <div class="tooltip" id="earthTooltip">Earth is the third planet from the Sun and the only known planet to support life...</div>
+            <p class="description">Earth is a unique haven in the solar system with its diverse climate and abundant water...</p>
+        </section>
+        <section id="mars" class="planet">
+            <h2>Mars</h2>
+            <canvas id="marsCanvas"></canvas>
+            <div class="tooltip" id="marsTooltip">Mars, the fourth planet, is known as the Red Planet...</div>
+            <p class="description">Mars is home to the tallest volcano and the deepest, longest canyon in the solar system...</p>
+        </section>
+        <section id="jupiter" class="planet">
+            <h2>Jupiter</h2>
+            <canvas id="jupiterCanvas"></canvas>
+            <div class="tooltip" id="jupiterTooltip">Jupiter is the largest planet in our solar system, a gas giant...</div>
+            <p class="description">Jupiter has a massive magnetic field and over 79 moons, including Ganymede, the largest moon in the solar system...</p>
+        </section>
+        <section id="saturn" class="planet">
+            <h2>Saturn</h2>
+            <canvas id="saturnCanvas"></canvas>
+            <div class="tooltip" id="saturnTooltip">Saturn is famous for its stunning ring system made of ice and rock...</div>
+            <p class="description">Saturn is the second-largest planet and has over 80 moons, with Titan being the most notable...</p>
+        </section>
+        <section id="uranus" class="planet">
+            <h2>Uranus</h2>
+            <canvas id="uranusCanvas"></canvas>
+            <div class="tooltip" id="uranusTooltip">Uranus is unique as it rotates on its side...</div>
+            <p class="description">Uranus is an ice giant with a cold atmosphere and faint rings, and it has 27 known moons...</p>
+        </section>
+        <section id="neptune" class="planet">
+            <h2>Neptune</h2>
+            <canvas id="neptuneCanvas"></canvas>
+            <div class="tooltip" id="neptuneTooltip">Neptune, the farthest planet from the Sun, is known for its striking blue color...</div>
+            <p class="description">Neptune is a cold, windy ice giant with 14 known moons, including Triton...</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Solar System Exploration. All rights reserved.</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        function create3DPlanet(canvasId, color) {
+            var scene = new THREE.Scene();
+            var camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+            var renderer = new THREE.WebGLRenderer({canvas: document.getElementById(canvasId)});
+            renderer.setSize(300, 300);
+
+            var geometry = new THREE.SphereGeometry(5, 32, 32);
+            var material = new THREE.MeshBasicMaterial({color: color});
+            var sphere = new THREE.Mesh(geometry, material);
+            scene.add(sphere);
+
+            camera.position.z = 10;
+
+            function animate() {
+                requestAnimationFrame(animate);
+                sphere.rotation.y += 0.01;
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+
+        create3DPlanet('sunCanvas', 0xffff00);
+        create3DPlanet('mercuryCanvas', 0xaaaaaa);
+        create3DPlanet('venusCanvas', 0xffa500);
+        create3DPlanet('earthCanvas', 0x0000ff);
+        create3DPlanet('marsCanvas', 0xff4500);
+        create3DPlanet('jupiterCanvas', 0xffd700);
+        create3DPlanet('saturnCanvas', 0xffe4b5);
+        create3DPlanet('uranusCanvas', 0x66ccff);
+        create3DPlanet('neptuneCanvas', 0x1e90ff);
+
+        // JavaScript for tooltips
