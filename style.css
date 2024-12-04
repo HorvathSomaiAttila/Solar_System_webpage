@@ -1,0 +1,94 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: radial-gradient(circle at 50% 50%, #000428, #004e92);
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 1em 0;
+    background: #000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3em;
+}
+
+nav {
+    background: #222;
+    padding: 1em 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1.5em;
+    transition: color 0.3s;
+    font-size: 1.2em;
+}
+
+nav a:hover {
+    color: #ffa500;
+}
+
+section {
+    padding: 4em 1em;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.planet {
+    margin: 3em 0;
+}
+
+.planet canvas {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.planet canvas:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.7);
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 10;
+    font-size: 1em;
+}
+
+.description {
+    max-width: 800px;
+    margin: 2em auto;
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+footer {
+    padding: 2em 0;
+    background: #000;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
