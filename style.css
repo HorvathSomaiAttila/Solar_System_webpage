@@ -92,3 +92,8 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+.picture {
+    max-width: 50%;
+    margin: auto;
+}
