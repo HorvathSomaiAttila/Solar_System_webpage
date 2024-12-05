@@ -1,7 +1,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at 50% 100%, #000428, #004e92);
+    background: radial-gradient(circle at 1% 100%, #000428, #004e92);
     color: white;
     margin: 0;
     padding: 0;
@@ -94,6 +94,41 @@ footer {
 }
 
 .picture {
-    max-width: 50%;
     margin: auto;
+}
+
+#sunimg {
+    width: 500px;
+}
+
+#mercuryimg {
+    width: 450px;
+}
+
+#venusimg {
+    width: 440px;
+}
+
+#earthimg {
+    width: 460px;
+}
+
+#marsimg{
+    width: 440px;
+}
+
+#jupiterimg{
+    width: 485px;
+}
+
+#saturnimg{
+    width: 499px;
+}
+
+#uranusimg{
+    width: 465px;
+}
+
+#neptuneimg{
+    width: 470px;
 }
