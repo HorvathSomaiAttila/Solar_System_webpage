@@ -1,7 +1,11 @@
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at 1% 100%, #000428, #004e92);
+    background: linear-gradient(to bottom, #004e92, #002858, #000428);
     color: white;
     margin: 0;
     padding: 0;
@@ -52,6 +56,11 @@ section {
 
 .planet {
     margin: 3em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
 }
 
 .planet canvas {
@@ -93,42 +102,91 @@ footer {
     bottom: 0;
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+text {
+    text-align: center;
+    max-width: 500px;
+    transition: transform 0.5s ease-in-out;
+}
 .picture {
     margin: auto;
 }
 
-#sunimg {
-    width: 500px;
+#sun {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
-#mercuryimg {
-    width: 450px;
+#sun .content {
+    display: flex;
+    flex-direction: column; /* Kép és szöveg egymás alatt */
+    align-items: center;
+    transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
-#venusimg {
-    width: 440px;
+/* Kép stílusa */
+#sun .picture {
+    width: 300px;
+    height: auto;
+    transition: transform 0.5s ease;
 }
 
-#earthimg {
-    width: 460px;
+/* Szöveg stílusa */
+#sun .text {
+    max-width: 600px;
+    margin-top: 20px;
+    text-align: center;
+    opacity: 1;
+    transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
-#marsimg{
-    width: 440px;
+/* Görgetéskor megváltozott elrendezés */
+#sun.active .content {
+    flex-direction: row; /* Kép és szöveg egymás mellett */
+    justify-content: flex-start;
+    gap: 40px;
+    transform: translateX(-10%);
 }
 
-#jupiterimg{
-    width: 485px;
+#sun.active .picture {
+    transform: translateX(-100px); /* Kép balra mozdul */
 }
 
-#saturnimg{
-    width: 499px;
+#sun.active .text {
+    transform: translateX(50px); /* Szöveg jobbra mozdul */
+    text-align: left;
+    opacity: 1; /* Biztosítjuk, hogy látható */
 }
 
-#uranusimg{
-    width: 465px;
+.content.active {
+    flex-direction: row;
+    justify-content: flex-start;
+    transform: translateX(-10%);
 }
 
-#neptuneimg{
-    width: 470px;
+img.active {
+    transform: translateX(-100px);
+}
+
+.text.active {
+    transform: translateX(50px);
+    text-align: left;
 }
