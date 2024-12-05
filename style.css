@@ -1,112 +1,163 @@
-
-html {
-    scroll-behavior: smooth;
-}
-
 body {
+
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at 100% 1%, #004e92, #000746, #03001f);
+
+    background: radial-gradient(circle at 1% 100%, #000428, #004e92, #00142a 90%, #000 100%);
+
     color: white;
+
     margin: 0;
+
     padding: 0;
+
     text-align: center;
+
     overflow-x: hidden;
+
 }
+
+
 
 header {
+
     padding: 1em 0;
+
     background: #000;
+
 }
+
+
 
 header h1 {
+
     margin: 0;
+
     font-size: 3em;
+
 }
+
+
 
 nav {
+
     background: #222;
+
     padding: 1em 0;
+
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
+
     display: flex;
+
     justify-content: center;
+
 }
+
+
 
 nav a {
+
     color: white;
+
     text-decoration: none;
+
     margin: 0 1.5em;
-    transition: color 0.3s;
+
+    transition: color 0.3s ease;
+
     font-size: 1.2em;
+
 }
+
+
 
 nav a:hover {
+
     color: #ffa500;
+
 }
+
+
 
 section {
+
     padding: 4em 1em;
+
     position: relative;
+
     min-height: 100vh;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
 }
+
+
 
 .planet {
+
     margin: 3em 0;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     height: 100vh;
+
     position: relative;
+
 }
 
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    transition: transform 0.5s ease-in-out;
-}
 
-img {
+
+.planet img {
+
     width: 300px;
+
     height: 300px;
-    margin-bottom: 20px;
-    transition: transform 0.5s ease-in-out;
+
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+
 }
+
+
 
 .text {
-    text-align: center;
+
     max-width: 500px;
-    transition: transform 0.5s ease-in-out;
-}
 
-.picture {
     margin: auto;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+
 }
 
-.content.active {
-    flex-direction: row;
-    justify-content: flex-start;
-    transform: translateX(-10%);
+
+
+.content.active img {
+
+    transform: translateX(-200px);
+
 }
 
-img.active {
-    transform: translateX(-100px);
-}
 
-.text.active {
-    transform: translateX(50px);
-    text-align: left;
-}
 
-footer {
-    padding: 2em 0;
-    background: #000;
-    position: relative;
-    width: 100%;
-    bottom: 0;
+.content.active .text {
+
+    transform: translateX(200px);
+
+    opacity: 1;
+
 }
