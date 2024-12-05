@@ -5,7 +5,7 @@ html {
 
 body {
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at 1% 100%, #000428, #004e92, #000);
+    background: radial-gradient(circle at 100% 1%, #004e92, #000746, #03001f);
     color: white;
     margin: 0;
     padding: 0;
