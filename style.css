@@ -58,6 +58,12 @@ section {
     position: relative;
 }
 
+#abelt {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .planet img {
     width: 300px;
     height: 300px;
@@ -77,7 +83,7 @@ section {
 }
 
 .content.active .text {
-    transform: translateX(200px);
+    transform: translateX(250px);
     opacity: 1;
 }
 
