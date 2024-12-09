@@ -33,7 +33,7 @@ for (let i = 0; i < stoneCount; i++) {
     stone.classList.add("stone");  // Az osztály neve "stone" lesz
     // A csillagok elosztása az egész képernyőn
     stone.style.left = `${Math.random() * 100}vw`; // Véletlenszerű vízszintes helyezkedés
-    stone.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random animációs idő
+    stone.style.animationDuration = `${Math.random() * 8 + 8}s`; // Random animációs idő
     stone.style.top = `${Math.random() * 100}vh`; // Véletlenszerű kezdőpont
     stonexContainer.appendChild(stone);
 }
@@ -50,7 +50,7 @@ for (let i = 0; i < stoneyCount; i++) {
     stoney.classList.add("stoney");  // Az osztály neve "stoney" lesz
     // A csillagok elosztása az egész képernyőn
     stoney.style.left = `${Math.random() * 100}vw`; // Véletlenszerű vízszintes helyezkedés
-    stoney.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random animációs idő
+    stoney.style.animationDuration = `${Math.random() * 8 + 8}s`; // Random animációs idő
     stoney.style.top = `${Math.random() * 100}vh`; // Véletlenszerű kezdőpont
     stoneyContainer.appendChild(stoney);
 }

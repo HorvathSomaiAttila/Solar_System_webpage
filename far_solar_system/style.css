@@ -127,7 +127,7 @@ section {
     background: rgb(35, 35, 35);
     opacity: 0.8;
     border-radius: 50%;
-    animation: starAnimation 100s linear infinite; /* Animáció */
+    animation: starAnimation 200s linear infinite; /* Animáció */
 }
 
 /* A függőlegesen lapított kövek (stoney) */
