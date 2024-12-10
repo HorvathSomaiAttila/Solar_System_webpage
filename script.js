@@ -73,3 +73,55 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+// Ellenőrizd, hogy a bolygó már ki van-e választva a sessionStorage-ban
+let userPlanet = sessionStorage.getItem("userPlanet");
+
+if (!userPlanet) {
+    // Ha nincs bolygó kiválasztva, kérd meg a felhasználót, hogy válasszon
+    userPlanet = prompt("Which planet are you from? (Enter the name, e.g., Earth)").toLowerCase();
+
+    // Ellenőrizd az érvényességet
+    const validPlanets = [
+        "sun", "mercury", "venus", "earth", "mars", 
+        "jupiter", "saturn", "uranus", "neptune"
+    ];
+
+    if (!validPlanets.includes(userPlanet)) {
+        alert("Invalid planet name. Defaulting to 'Earth'.");
+        userPlanet = "earth";
+    }
+
+    // Mentés a sessionStorage-ba
+    sessionStorage.setItem("userPlanet", userPlanet);
+}
+
+// Csak a kiválasztott bolygót engedélyezni szerkesztésre
+const planetSections = document.querySelectorAll("section.planet");
+
+planetSections.forEach((section) => {
+    const planetId = section.id;
+    if (planetId !== userPlanet) {
+        section.classList.add("restricted");
+    }
+});
+
+// Figyelmeztetés megjelenítése korlátozott bolygóra kattintáskor
+planetSections.forEach((section) => {
+    section.addEventListener("click", (e) => {
+        if (section.classList.contains("restricted")) {
+            e.preventDefault(); // Link vagy művelet megakadályozása
+            alert("You can only edit the planet you are from.");
+        }
+    });
+});
+
+// Csak a felhasználó bolygójához tartozó szövegeket tedd szerkeszthetővé
+planetSections.forEach((section) => {
+    const planetId = section.id;
+    const textDiv = section.querySelector(".text");
+    if (planetId === userPlanet) {
+        textDiv.setAttribute("contenteditable", "true");
+        //textDiv.style.border = "2px dashed #ffa500"; // Vizuális jelzés a szerkeszthetőségre
+    }
+});
