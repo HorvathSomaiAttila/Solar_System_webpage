@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #3b4049;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #61dafb;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #21a1f1;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <input type="text" id="name" placeholder="Enter Your Name" required>
+        <select id="planet" required>
+            <option value="">Select Your Planet</option>
+            <option value="mercury">Mercury</option>
+            <option value="venus">Venus</option>
+            <option value="earth">Earth</option>
+            <option value="mars">Mars</option>
+            <option value="jupiter">Jupiter</option>
+            <option value="saturn">Saturn</option>
+            <option value="uranus">Uranus</option>
+            <option value="neptune">Neptune</option>
+            <option value="pluto">Pluto</option>
+            <option value="jupiter">Comet</option>
+            <option value="saturn">Haumea</option>
+            <option value="uranus">Eris</option>
+            <option value="neptune">Makemake</option>
+            <option value="pluto">Sedna</option>
+        </select>
+        <button onclick="login()">Login</button>
+        <p class="error" id="errorMessage"></p>
+    </div>
+
+    <script>
+        function login() {
+            const name = document.getElementById("name").value.trim();
+            const planet = document.getElementById("planet").value;
+
+            if (!name || !planet) {
+                document.getElementById("errorMessage").textContent = "Please enter your name and select a planet.";
+                return;
+            }
+
+            // Store user session
+            sessionStorage.setItem("user", JSON.stringify({ name, planet }));
+
+            // Redirect based on planet
+            const externalPlanets = ["pluto", "comet", "haumea", "makemake", "eris", "sedna"];
+            const redirectPage = externalPlanets.includes(planet) ? "external_system.html" : "index.html";
+
+            window.location.href = `${redirectPage}?planet=${planet}`;
+        }
+    </script>
+</body>
+</html>
