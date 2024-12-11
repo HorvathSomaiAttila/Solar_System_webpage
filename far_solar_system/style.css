@@ -259,3 +259,11 @@ nav.scrolled {
     opacity: 0.9;
 }
 
+.planet {
+    transition: opacity 0.3s;
+}
+
+.planet.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

@@ -231,3 +231,27 @@ nav.scrolled {
     opacity: 0.9;
 }
 
+.login-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.planet {
+    transition: opacity 0.3s;
+}
+
+.planet.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}

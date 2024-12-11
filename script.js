@@ -73,3 +73,49 @@ window.addEventListener("scroll", () => {
         }
     });
 });
+
+let selectedPlanet = null;
+
+function setPlanetAccess(planet) {
+    selectedPlanet = planet;
+    document.querySelectorAll('.planet').forEach(el => {
+        if (el.dataset.name !== planet) {
+            el.classList.add('disabled');
+            el.style.pointerEvents = 'none';
+            el.style.opacity = '0.5';
+        } else {
+            el.classList.remove('disabled');
+            el.style.pointerEvents = 'auto';
+            el.style.opacity = '1';
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const selectedPlanet = sessionStorage.getItem('selectedPlanet');
+    if (selectedPlanet) {
+        setPlanetAccess(selectedPlanet);
+        const targetElement = document.querySelector(`#${selectedPlanet}`);
+        if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const userData = JSON.parse(sessionStorage.getItem("user"));
+    if (userData && userData.planet) {
+        const { planet } = userData;
+        // Scroll to the correct planet
+        const targetPlanet = document.getElementById(planet);
+        if (targetPlanet) {
+            targetPlanet.scrollIntoView({ behavior: 'smooth' });
+        }
+        // Disable non-selected planets
+        document.querySelectorAll('.planet').forEach(el => {
+            if (el.id !== planet) {
+                el.classList.add('disabled');
+            } else {
+                el.classList.remove('disabled');
+            }
+        });
+    }
+});
