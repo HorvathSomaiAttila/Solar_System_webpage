@@ -34,16 +34,14 @@ for (let i = 0; i < 100; i++) {
 
 const scrollToTopButton = document.getElementById("scrollToTop");
 
-// Görgetés figyelése a gomb megjelenítéséhez
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) { // 200px-nél lejjebb megjelenik a gomb
+    if (window.scrollY > 200) {
         scrollToTopButton.style.display = "block";
     } else {
         scrollToTopButton.style.display = "none";
     }
 });
 
-// Gomb kattintására görgetés az oldal tetejére
 scrollToTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
@@ -96,13 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Bolygóválasztó esemény kezelése
     const planetSelector = document.getElementById("planetSelect");
     if (planetSelector) {
         planetSelector.addEventListener("change", (event) => {
             const selectedPlanet = event.target.value;
 
-            // Görgetés a kijelölt bolygóhoz
             const targetPlanet = document.getElementById(selectedPlanet);
             if (targetPlanet) {
                 targetPlanet.scrollIntoView({ behavior: "smooth" });
@@ -117,12 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const userData = JSON.parse(sessionStorage.getItem("user"));
     if (userData && userData.planet) {
         const { planet } = userData;
-        // Scroll to the correct planet
         const targetPlanet = document.getElementById(planet);
         if (targetPlanet) {
             targetPlanet.scrollIntoView({ behavior: 'smooth' });
         }
-        // Disable non-selected planets
         document.querySelectorAll('.planet').forEach(el => {
             if (el.id !== planet) {
                 el.classList.add('disabled');

@@ -95,13 +95,11 @@
         const editButton = document.getElementById('editButton');
         const saveButton = document.getElementById('saveButton');
 
-        // Load saved content if available
         const savedContent = localStorage.getItem('SunInfo');
         if (savedContent) {
             SunInfo.textContent = savedContent;
         }
 
-        // Enable editing
         editButton.addEventListener('click', () => {
             SunInfo.contentEditable = "true";
             SunInfo.style.border = "1px solid #ccc";
@@ -109,7 +107,6 @@
             saveButton.style.display = "inline-block";
         });
 
-        // Save changes
         saveButton.addEventListener('click', () => {
             SunInfo.contentEditable = "false";
             SunInfo.style.border = "none";
@@ -118,7 +115,6 @@
             saveButton.style.display = "none";
         });
 
-        // Back to main page
         document.getElementById('backButton').addEventListener('click', () => {
             window.location.href = '../index.html';
         });

@@ -96,13 +96,11 @@
         const editButton = document.getElementById('editButton');
         const saveButton = document.getElementById('saveButton');
 
-        // Load saved content if available
         const savedContent = localStorage.getItem('halleyInfo');
         if (savedContent) {
             halleyInfo.textContent = savedContent;
         }
 
-        // Enable editing
         editButton.addEventListener('click', () => {
             halleyInfo.contentEditable = "true";
             halleyInfo.style.border = "1px solid #ccc";
@@ -110,7 +108,6 @@
             saveButton.style.display = "inline-block";
         });
 
-        // Save changes
         saveButton.addEventListener('click', () => {
             halleyInfo.contentEditable = "false";
             halleyInfo.style.border = "none";
@@ -119,7 +116,6 @@
             saveButton.style.display = "none";
         });
 
-        // Back to main page
         document.getElementById('backButton').addEventListener('click', () => {
             window.location.href = '../index.html';
         });

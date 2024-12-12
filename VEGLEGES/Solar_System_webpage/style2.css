@@ -102,14 +102,11 @@ section {
     transition: transform 0.3s ease-in-out;
 }
 
-/* Hover-effektus eltolódott állapotban */
 .content.active .picture:hover {
-    transform: translateX(-200px) scale(1.5); /* Megtartja az eltolást (-100px) és növeli a méretet */
+    transform: translateX(-200px) scale(1.5);
 }
 
-/* háttéranimáció + felvivő gomb */
-/* A csillagok elhelyezése és animációja */
-.stonesx, .stonesy {
+.stars {
     position: fixed;
     top: 0;
     left: 0;
@@ -119,41 +116,15 @@ section {
     z-index: -1;
 }
 
-/* A vízszintesen lapított kövek (stone) */
-.stone {
+.star {
     position: absolute;
-    width: 13px; /* Szélesség */
-    height: 8px; /* Magasság */
-    background: rgb(35, 35, 35);
+    width: 2px;
+    height: 2px;
+    background: white;
     opacity: 0.8;
     border-radius: 50%;
-    animation: starAnimation 200s linear infinite; /* Animáció */
+    animation: starAnimation 100s linear infinite;
 }
-
-/* A függőlegesen lapított kövek (stoney) */
-.stoney {
-    position: absolute;
-    width: 9px; /* Szűkebb szélesség */
-    height: 12px; /* Magasabb magasság */
-    background: rgb(36, 36, 36);
-    opacity: 0.8;
-    border-radius: 50%;
-    animation: starAnimation 100s linear infinite; /* Animáció */
-}
-
-/* Kulcsanimáció a csillagok mozgásához (ne tűnjenek el) */
-@keyframes starAnimation {
-    0% {
-        transform: translateY(0); /* Kezdő pozíció, az elejétől */
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh); /* Az oldal teljes magassága */
-        opacity: 0.5; /* Lassan halványodjon el */
-    }
-}
-
-
 
 
 #scrollToTop {
@@ -178,7 +149,6 @@ section {
     transform: scale(1.1);
 }
 
-/* Navigáció sáv háttér animáció */
 nav {
     background: linear-gradient(45deg, #ffa500, #ff5733, #3357ff);
     background-size: 200% 200%;
@@ -193,7 +163,6 @@ nav {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Színátmenet animáció */
 @keyframes gradientAnimation {
     0% {
         background-position: 0% 50%;
@@ -206,7 +175,6 @@ nav {
     }
 }
 
-/* Navigációs linkek animációja */
 nav a {
     color: white;
     text-decoration: none;
@@ -216,20 +184,17 @@ nav a {
     transition: color 0.3s, transform 0.3s ease;
 }
 
-/* Hover effekt */
 nav a:hover {
     color: #ffe600;
     transform: scale(1.2) rotate(2deg);
 }
 
-/* Aktív link stílus */
 nav a.active {
     font-weight: bold;
     color: #00ffcc;
     border-bottom: 2px solid #00ffcc;
 }
 
-/* Aláhúzás animáció */
 nav a::after {
     content: "";
     position: absolute;
@@ -247,8 +212,8 @@ nav a:hover::after {
 }
 
 nav {
-    background: rgba(0, 0, 0, 0.8); /* Átlátszó fekete háttér */
-    backdrop-filter: blur(5px); /* Homályosítás */
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
     padding: 1em 2em;
     border-radius: 10px;
     transition: transform 0.3s ease, opacity 0.3s ease;

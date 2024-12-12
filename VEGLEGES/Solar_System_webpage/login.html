@@ -21,6 +21,8 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 100%;
+            max-width: 400px;
         }
 
         input, select, button {
@@ -28,15 +30,18 @@
             width: 100%;
             margin: 10px 0;
             padding: 8px;
+            box-sizing: border-box;
         }
 
         button:hover {
             background-color: #21a1f1;
         }
+
         .error {
             color: red;
             font-size: 14px;
         }
+
     </style>
 </head>
 <body>
@@ -54,7 +59,6 @@
             <option value="saturn">Saturn</option>
             <option value="uranus">Uranus</option>
             <option value="neptune">Neptune</option>
-            <option value="pluto">Pluto</option>
             <option value="comet">Comet</option>
             <option value="haumea">Haumea</option>
             <option value="eris">Eris</option>
@@ -64,41 +68,36 @@
         <button type="button" onclick="login(event)">Login</button>
         <p class="error" id="errorMessage"></p>
     </div>
+    
     <script>
         function login(event) {
-    event.preventDefault();  // Megakadályozza az űrlap elküldését
+            event.preventDefault();  
 
-    const name = document.getElementById('name').value;
-    const planet = document.getElementById('planet').value;
+            const name = document.getElementById('name').value;
+            const planet = document.getElementById('planet').value;
 
-    // Ellenőrizzük, hogy mindkét mező ki van-e töltve
-    if (!name || !planet) {
-        document.getElementById('errorMessage').textContent = 'Kérjük, töltse ki mindkét mezőt!';
-        return;
-    }
+            if (!name || !planet) {
+                document.getElementById('errorMessage').textContent = 'Kérjük, töltse ki mindkét mezőt!';
+                return;
+            }
 
-    // Mentjük a felhasználó adatait a sessionStorage-ba
-    sessionStorage.setItem("user", JSON.stringify({ name, planet }));
+            sessionStorage.setItem("user", JSON.stringify({ name, planet }));
 
-    // Bolygók csoportosítása
-    const outerSolarSystemPlanets = ['pluto', 'comet', 'haumea', 'eris', 'makemake', 'sedna'];
-    const innerSolarSystemPlanets = ['sun', 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+            const outerSolarSystemPlanets = ['pluto', 'comet', 'haumea', 'eris', 'makemake', 'sedna'];
+            const innerSolarSystemPlanets = ['sun', 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
 
-    // Irányítás a megfelelő oldalra a kiválasztott bolygó alapján
-    let redirectPage;
-    if (innerSolarSystemPlanets.includes(planet)) {
-        redirectPage = 'index.html';  // Belső naprendszer oldal
-    } else if (outerSolarSystemPlanets.includes(planet)) {
-        redirectPage = 'index2.html';  // Külső naprendszer oldal
-    } else {
-        document.getElementById('errorMessage').textContent = 'Érvénytelen bolygó választás!';
-        return;
-    }
+            let redirectPage;
+            if (innerSolarSystemPlanets.includes(planet)) {
+                redirectPage = 'index.html';  
+            } else if (outerSolarSystemPlanets.includes(planet)) {
+                redirectPage = 'index2.html';  
+            } else {
+                document.getElementById('errorMessage').textContent = 'Érvénytelen bolygó választás!';
+                return;
+            }
 
-    // Átirányítás a megfelelő oldalra
-    window.location.href = redirectPage;
-}
-
+            window.location.href = redirectPage;
+        }
     </script>
 </body>
 </html>

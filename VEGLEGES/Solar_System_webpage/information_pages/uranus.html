@@ -92,13 +92,11 @@
         const editButton = document.getElementById('editButton');
         const saveButton = document.getElementById('saveButton');
 
-        // Load saved content if available
         const savedContent = localStorage.getItem('UranusInfo');
         if (savedContent) {
             UranusInfo.textContent = savedContent;
         }
 
-        // Enable editing
         editButton.addEventListener('click', () => {
             UranusInfo.contentEditable = "true";
             UranusInfo.style.border = "1px solid #ccc";
@@ -106,7 +104,6 @@
             saveButton.style.display = "inline-block";
         });
 
-        // Save changes
         saveButton.addEventListener('click', () => {
             UranusInfo.contentEditable = "false";
             UranusInfo.style.border = "none";
@@ -115,7 +112,6 @@
             saveButton.style.display = "none";
         });
 
-        // Back to main page
         document.getElementById('backButton').addEventListener('click', () => {
             window.location.href = '../index.html';
         });

@@ -1,14 +1,14 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(to bottom, #062c43, #054569, #5591a9, #9ccddc); /* Színátmenet a háttérhez */
-    color: #ced7e0; /* Világos szürke szövegekhez */
+    color: #ced7e0;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
 header {
-    background: #062c43; /* Sötétkék háttér */
+    background: #062c43;
     padding: 1em 0;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
 }
@@ -16,7 +16,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 2.5em;
-    color: #9ccddc; /* Világosabb szín a címhez */
+    color: #9ccddc;
 }
 
 main {
@@ -66,7 +66,7 @@ main {
 }
 
 .info-box h2 {
-    color: #5591a9; /* Kék szín a címekhez */
+    color: #5591a9;
     margin-bottom: 1em;
 }
 
@@ -82,8 +82,8 @@ main {
 #backButton {
     padding: 10px 20px;
     font-size: 1.2em;
-    background: #054569; /* Sötét kék gomb háttér */
-    color: #ced7e0; /* Világos szürke szöveg a gombon */
+    background: #054569;
+    color: #ced7e0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -92,7 +92,7 @@ main {
 }
 
 #backButton:hover {
-    background: #5591a9; /* Világosabb kék gomb hover szín */
+    background: #5591a9;
     transform: scale(1.1);
 }
 
@@ -110,7 +110,6 @@ main {
     }
 }
 
-/* Responsive stílusok (felbontás alatti eszközökre) */
 .details {
     display: flex;
     align-items: center;
