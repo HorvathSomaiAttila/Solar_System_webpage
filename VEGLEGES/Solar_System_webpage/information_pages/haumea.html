@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haumea</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Haumea</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/haumea.jpg" alt="Haumea">
+            </div>
+            <div class="info-box">
+                <h2>About Haumea</h2>
+                <p id="HaumeaInfo" contenteditable="false">
+                    Haumea is a dwarf planet located beyond Neptune's orbit. It was discovered in 2004 by a team headed by Mike Brown of Caltech at the Palomar Observatory, and formally announced in 2005 by a team headed by José Luis Ortiz Moreno at the Sierra Nevada Observatory in Spain, who had discovered it that year in precovery images taken by the team in 2003. From that announcement, it received the provisional designation 2003 EL61. <br>
+                    On 17 September 2008, it was named after Haumea, the Hawaiian goddess of childbirth, under the expectation by the International Astronomical Union (IAU) that it would prove to be a dwarf planet. Nominal estimates make it the third-largest known trans-Neptunian object, after Eris and Pluto, and approximately the size of Uranus's moon Titania.                </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 1,632 km</li>
+                    <li><strong>Orbit:</strong> 43.2 AU from the Sun</li>
+                    <li><strong>Interesting Fact:</strong> Haumea has an unusual, egg-shaped form, likely due to its fast rotation (it spins once every 4 hours). It's also one of the few dwarf planets with a ring system.</li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+    <script>
+        const HaumeaInfo = document.getElementById('HaumeaInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        // Load saved content if available
+        const savedContent = localStorage.getItem('HaumeaInfo');
+        if (savedContent) {
+            HaumeaInfo.textContent = savedContent;
+        }
+
+        // Enable editing
+        editButton.addEventListener('click', () => {
+            HaumeaInfo.contentEditable = "true";
+            HaumeaInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        // Save changes
+        saveButton.addEventListener('click', () => {
+            HaumeaInfo.contentEditable = "false";
+            HaumeaInfo.style.border = "none";
+            localStorage.setItem('HaumeaInfo', HaumeaInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        // Back to main page
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index2.html';
+        });
+    </script>
+</body>
+</html>

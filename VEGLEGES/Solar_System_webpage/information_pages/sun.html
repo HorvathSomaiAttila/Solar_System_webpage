@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sun</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The Sun</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/sunpic.jpg" alt="The Sun">
+            </div>
+            <div class="info-box">
+                <h2>About the Sun</h2>
+                <p id="SunInfo" contenteditable="false">
+                    The Sun is the Solar System's star and by far its most massive component. Its large mass  which comprises 99.86% of all the mass in the Solar System, produces temperatures and densities in its core high enough to sustain nuclear fusion of hydrogen into helium.
+                    The Sun is a population I star, having formed in the spiral arms of the Milky Way galaxy.
+                                    </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 1,391,000 km</li>
+                    <li><strong>Orbit:</strong> 0 AU from the Sun</li>
+                    <li><strong>Interesting Fact:</strong> The Sun's mass makes up about 99.86% of the entire mass of the Solar System. This means the Sun "dominates" the gravitational influence of the Solar System.</li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+
+    <script>
+        const SunInfo = document.getElementById('SunInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        // Load saved content if available
+        const savedContent = localStorage.getItem('SunInfo');
+        if (savedContent) {
+            SunInfo.textContent = savedContent;
+        }
+
+        // Enable editing
+        editButton.addEventListener('click', () => {
+            SunInfo.contentEditable = "true";
+            SunInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        // Save changes
+        saveButton.addEventListener('click', () => {
+            SunInfo.contentEditable = "false";
+            SunInfo.style.border = "none";
+            localStorage.setItem('SunInfo', SunInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        // Back to main page
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+</body>
+</html>

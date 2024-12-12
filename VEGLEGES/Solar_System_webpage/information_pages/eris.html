@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eris</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Eris</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/erispic.jpg" alt="Eris">
+            </div>
+            <div class="info-box">
+                <h2>About Eris</h2>
+                <p id="ErisInfo" contenteditable="false">
+                    Eris is the most massive and second-largest known dwarf planet in the Solar System. It is a trans-Neptunian object (TNO) in the scattered disk and has a high-eccentricity orbit. Eris was discovered in January 2005 by a Palomar Observatory–based team led by Mike Brown and verified later that year. It was named in September 2006 after the Greco–Roman goddess of strife and discord. Eris is the ninth-most massive known object orbiting the Sun and the sixteenth-most massive overall in the Solar System (counting moons). It is also the largest known object in the solar system that has not been visited by a spacecraft. Eris has been measured at 2,326 ± 12 kilometres in diameter; its mass is 0.28% that of the Earth and 27% greater than that of Pluto, although Pluto is slightly larger by volume. Both Eris and Pluto have a surface area that is comparable to that of Russia or South America.                </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 2,326 km</li>
+                    <li><strong>Orbit:</strong> 96.3 AU from the Sun</li>
+                    <li><strong>Interesting Fact:</strong> Eris is slightly smaller than Pluto but has a greater mass. It was discovered in 2005 and played a significant role in the reclassification of Pluto as a "dwarf planet."</li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+
+    <script>
+        const ErisInfo = document.getElementById('ErisInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        // Load saved content if available
+        const savedContent = localStorage.getItem('ErisInfo');
+        if (savedContent) {
+            ErisInfo.textContent = savedContent;
+        }
+
+        // Enable editing
+        editButton.addEventListener('click', () => {
+            ErisInfo.contentEditable = "true";
+            ErisInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        // Save changes
+        saveButton.addEventListener('click', () => {
+            ErisInfo.contentEditable = "false";
+            ErisInfo.style.border = "none";
+            localStorage.setItem('ErisInfo', ErisInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        // Back to main page
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index2.html';
+        });
+    </script>
+</body>
+</html>

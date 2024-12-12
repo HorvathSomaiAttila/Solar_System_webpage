@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uranus</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Uranus</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/uranuspic.jpg" alt="Uranus">
+            </div>
+            <div class="info-box">
+                <h2>About Uranus</h2>
+                <p id="UranusInfo" contenteditable="false">
+                    Uranus is the seventh planet from the Sun. It is a gaseous cyan-coloured ice giant. Most of the planet is made of water, ammonia, and methane in a supercritical phase of matter, which astronomy calls "ice" or volatiles. The planet's atmosphere has a complex layered cloud structure and has the lowest minimum temperature (49 K (−224 °C; −371 °F)) of all the Solar System's planets. Like the other giant planets, Ur anus has a ring system, a magnetosphere, and many natural satellites.                </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 50,724 km</li>
+                    <li><strong>Orbit:</strong> 19.18 AU from the Sun</li>
+                    <li><strong>Interesting Fact:</strong> Uranus is the only planet that rotates "on its side," meaning its axis is almost parallel to its orbit, giving it a unique "tilted" spin.</li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+    <script>
+        const UranusInfo = document.getElementById('UranusInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        // Load saved content if available
+        const savedContent = localStorage.getItem('UranusInfo');
+        if (savedContent) {
+            UranusInfo.textContent = savedContent;
+        }
+
+        // Enable editing
+        editButton.addEventListener('click', () => {
+            UranusInfo.contentEditable = "true";
+            UranusInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        // Save changes
+        saveButton.addEventListener('click', () => {
+            UranusInfo.contentEditable = "false";
+            UranusInfo.style.border = "none";
+            localStorage.setItem('UranusInfo', UranusInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        // Back to main page
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+</body>
+</html>
