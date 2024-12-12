@@ -7,8 +7,6 @@ function debounce(func, wait) {
     };
 }
 
-
-
 document.addEventListener("scroll", debounce(() => {
     const sections = document.querySelectorAll(".planet .content");
     sections.forEach((section) => {
@@ -20,7 +18,6 @@ document.addEventListener("scroll", debounce(() => {
         }
     });
 }, 50));
-
 
 const starContainer = document.createElement("div");
 starContainer.classList.add("stars");
@@ -97,6 +94,22 @@ document.addEventListener('DOMContentLoaded', () => {
         setPlanetAccess(selectedPlanet);
         const targetElement = document.querySelector(`#${selectedPlanet}`);
         if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Bolygóválasztó esemény kezelése
+    const planetSelector = document.getElementById("planetSelect");
+    if (planetSelector) {
+        planetSelector.addEventListener("change", (event) => {
+            const selectedPlanet = event.target.value;
+
+            // Görgetés a kijelölt bolygóhoz
+            const targetPlanet = document.getElementById(selectedPlanet);
+            if (targetPlanet) {
+                targetPlanet.scrollIntoView({ behavior: "smooth" });
+            } else {
+                console.error("Section not found for planet:", selectedPlanet);
+            }
+        });
     }
 });
 

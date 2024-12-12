@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="login-container">
         <h1>Login</h1>
         <input type="text" id="name" placeholder="Enter Your Name" required>
         <select id="planet" required>
@@ -64,29 +64,41 @@
         <button type="button" onclick="login(event)">Login</button>
         <p class="error" id="errorMessage"></p>
     </div>
-    <script>function login(event) {
-        event.preventDefault();  // Prevent form submission
-    
-        const name = document.getElementById('name').value;
-        const planet = document.getElementById('planet').value;
-        if (!name || !planet) {
-            document.getElementById('errorMessage').textContent = 'Please fill out both fields!';
-            return;
-        }
-        
-        sessionStorage.setItem("user", JSON.stringify({ name, planet }));
-    
-        // Decide the correct page to redirect to based on the planet
-        let redirectPage = 'index.html';  // Default page
-        const secondPagePlanets = ['pluto', 'comet', 'haumea', 'eris', 'makemake', 'sedna'];
-        if (secondPagePlanets.includes(planet)) {
-            redirectPage = 'far_solar_system/index.html'; // Absolute path to ensure correct redirection
-        }
-    
-        window.location.href = redirectPage;  // Redirect to the appropriate page
+    <script>
+        function login(event) {
+    event.preventDefault();  // Megakadályozza az űrlap elküldését
+
+    const name = document.getElementById('name').value;
+    const planet = document.getElementById('planet').value;
+
+    // Ellenőrizzük, hogy mindkét mező ki van-e töltve
+    if (!name || !planet) {
+        document.getElementById('errorMessage').textContent = 'Kérjük, töltse ki mindkét mezőt!';
+        return;
     }
-    
+
+    // Mentjük a felhasználó adatait a sessionStorage-ba
+    sessionStorage.setItem("user", JSON.stringify({ name, planet }));
+
+    // Bolygók csoportosítása
+    const outerSolarSystemPlanets = ['pluto', 'comet', 'haumea', 'eris', 'makemake', 'sedna'];
+    const innerSolarSystemPlanets = ['sun', 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+
+    // Irányítás a megfelelő oldalra a kiválasztott bolygó alapján
+    let redirectPage;
+    if (innerSolarSystemPlanets.includes(planet)) {
+        redirectPage = 'index.html';  // Belső naprendszer oldal
+    } else if (outerSolarSystemPlanets.includes(planet)) {
+        redirectPage = 'index2.html';  // Külső naprendszer oldal
+    } else {
+        document.getElementById('errorMessage').textContent = 'Érvénytelen bolygó választás!';
+        return;
+    }
+
+    // Átirányítás a megfelelő oldalra
+    window.location.href = redirectPage;
+}
+
     </script>
-    
 </body>
 </html>

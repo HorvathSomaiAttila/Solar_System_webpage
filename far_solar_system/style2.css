@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: radial-gradient(circle at top, #004e92, #00142a, #000428, #000);
+    background: radial-gradient(circle at top, #000c17, #040017, #000210, #000);
     color: white;
     margin: 0;
     padding: 0;
@@ -108,7 +108,8 @@ section {
 }
 
 /* háttéranimáció + felvivő gomb */
-.stars {
+/* A csillagok elhelyezése és animációja */
+.stonesx, .stonesy {
     position: fixed;
     top: 0;
     left: 0;
@@ -118,15 +119,42 @@ section {
     z-index: -1;
 }
 
-.star {
+/* A vízszintesen lapított kövek (stone) */
+.stone {
     position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
+    width: 13px; /* Szélesség */
+    height: 8px; /* Magasság */
+    background: rgb(35, 35, 35);
     opacity: 0.8;
     border-radius: 50%;
-    animation: starAnimation 100s linear infinite;
+    animation: starAnimation 200s linear infinite; /* Animáció */
 }
+
+/* A függőlegesen lapított kövek (stoney) */
+.stoney {
+    position: absolute;
+    width: 9px; /* Szűkebb szélesség */
+    height: 12px; /* Magasabb magasság */
+    background: rgb(36, 36, 36);
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: starAnimation 100s linear infinite; /* Animáció */
+}
+
+/* Kulcsanimáció a csillagok mozgásához (ne tűnjenek el) */
+@keyframes starAnimation {
+    0% {
+        transform: translateY(0); /* Kezdő pozíció, az elejétől */
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh); /* Az oldal teljes magassága */
+        opacity: 0.5; /* Lassan halványodjon el */
+    }
+}
+
+
+
 
 #scrollToTop {
     position: fixed;
@@ -229,22 +257,6 @@ nav {
 nav.scrolled {
     transform: translateY(-10px);
     opacity: 0.9;
-}
-
-.login-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.login-btn:hover {
-    background-color: #0056b3;
 }
 
 .planet {
