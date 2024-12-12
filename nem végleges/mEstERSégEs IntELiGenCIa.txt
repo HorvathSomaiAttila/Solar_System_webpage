@@ -1,0 +1,93 @@
+Létrejött ez a beléptetőrendszeres html: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style> Ezt egybe tudod valahogyan ágyazni a mi weboldalunkkal, úgy hogy 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #3b4049;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        input, select, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #61dafb;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #21a1f1;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <input type="text" id="name" placeholder="Enter Your Name" required>
+        <select id="planet" required>
+            <option value="">Select Your Planet</option>
+            <option value="earth">Earth</option>
+            <option value="mars">Mars</option>
+            <option value="venus">Venus</option>
+            <option value="jupiter">Jupiter</option>
+        </select>
+        <button onclick="register()">Register</button>
+        <p class="error" id="errorMessage"></p>
+    </div>
+
+    <script>
+        // Check if user is already registered and redirect to their planet
+        const session = JSON.parse(sessionStorage.getItem('user'));
+        if (session && session.name && session.planet) {
+            window.location.href = `${session.planet}.html`;
+        }
+
+        // Register function
+        function register() {
+            const name = document.getElementById("name").value.trim();
+            const planet = document.getElementById("planet").value;
+
+            const errorMessage = document.getElementById("errorMessage");
+
+            if (!name || !planet) {
+                errorMessage.textContent = "Please enter your name and select a planet.";
+                return;
+            }
+
+            // Save session data
+            sessionStorage.setItem(
+                "user",
+                JSON.stringify({ name, planet })
+            );
+
+            // Redirect to the planet page
+            window.location.href = `${planet}.html`;
+        }
+    </script>
+</body>
+</html> szóval ezt tedd át a naprendszeres html-be úgy hogy eredetileg nem lehet szerkeszteni semmit. azután, hogyha megnyomok egy login gombot akkor lehessen megadni egy felhasználónevet meg egy bolygót, amit a legörgethető menüből lehessen kiválasztani. amikor bejelentkezünk akkor szürküljön el az összes bolygó kivéve az, amelyik ki lett választva. emellett gördüljön le oda ahhoz a bolygóhoz, amely ki lett választva. vedd figyelembe, hogy a plútó, a halley, a haumea, az eris, makemake és sedna az egy másik oldalon van szóval akkor annál a másik oldalon görgessen le a megfelelő bolygóhoz. ugye ha rákattintunk a megfelelő bolygóra akkor átdob arra az oldalra amelyiken arról az égitestről van az adott információ(az összes ilyen oldal felépítése ugyanaz csak a tartalom más. és akkor azt a weboldalt lehessen szerkeszteni az oldalon belül, de csakis azt ami ki lett választva a többi bolygóra ne lehessen rákattintani, hogyha már be vagyunk jelentkezve, de ha még nem vagyunk bejelentkezve, akkor az összes bolygót lehessen megnézni, csak szerkeszteni nem lehet egyiket sem. csatolom hozzá az eddigi weboldalak mappáját
