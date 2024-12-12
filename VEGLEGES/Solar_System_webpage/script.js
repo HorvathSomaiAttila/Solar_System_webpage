@@ -126,3 +126,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+const usernameDisplay = document.getElementById('usernameDisplay');
+
+const savedUsername = localStorage.getItem('username');
+
+if (savedUsername) {
+    usernameDisplay.textContent = savedUsername;
+} else {
+    usernameDisplay.textContent = 'Guest';
+}
+
+document.getElementById('loginForm').addEventListener('submit', (event) => {
+    const usernameInput = document.getElementById('usernameInput').value;
+    if (usernameInput) {
+        localStorage.setItem('username', usernameInput);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const savedUsername = localStorage.getItem('username');
+
+    if (savedUsername && savedUsername.trim() !== '') {
+        usernameDisplay.textContent = savedUsername;
+    } else {
+        usernameDisplay.textContent = 'Guest';
+    }
+});
+
+console.log('Username:', localStorage.getItem('username'));
+console.log('Planet:', localStorage.getItem('planet'));

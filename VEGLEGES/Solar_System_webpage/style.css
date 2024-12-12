@@ -70,6 +70,32 @@ section {
     transition: transform 0.8s ease-out, opacity 0.1s ease-out;
 }
 
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-header .user-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.fixed-header span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
 .text {
     max-width: 500px;
     margin: auto;

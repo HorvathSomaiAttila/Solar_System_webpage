@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <header>
         <h1>Welcome to the Solar System</h1>
         <p>Choose your home planet to start exploring and editing its details.</p>
     </header>
     
     <nav>
+        <div id="userInfo" class="fixed-header">
+            <img src="Images/astronaut-helmet.png" alt="Astronaut Icon" class="user-icon">
+            <span id="usernameDisplay">Guest</span>
+        </div>
         <a href="#sun">Sun</a>
         <a href="#mercury">Mercury</a>
         <a href="#venus">Venus</a>
@@ -113,10 +118,6 @@
         </section>
     </main>
     <button id="scrollToTop">Scroll to Top</button>
-
-    <footer>
-        <p>&copy; 2024 Solar System Exploration. All rights reserved.</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
