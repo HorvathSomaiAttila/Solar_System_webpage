@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mars</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/marspic.jpg" alt="Mars">
+            </div>
+            <div class="info-box">
+                <h2>About Mars</h2>
+                <p id="MarsInfo" contenteditable="false">
+                    Mars is the fourth planet from the Sun. Mars has a radius about half of that of Earth. Most of the planet is red due to iron oxide in Martian soil, and the polar regions are covered in white ice caps made of water and carbon dioxide. The relatively flat plains in northern parts of Mars strongly contrast with the cratered terrain in southern highlands – this terrain observation is known as the Martian dichotomy.                </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 6,779 km</li>
+                    <li><strong>Orbit:</strong> 1.52 AU from the Sun</li>
+                    <li><strong>Interesting Fact:</strong> Mars has two small moons, Phobos and Deimos, which are believed to be captured asteroids.</li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+
+    <script>
+        const MarsInfo = document.getElementById('MarsInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        const savedContent = localStorage.getItem('MarsInfo');
+        if (savedContent) {
+            MarsInfo.textContent = savedContent;
+        }
+
+        editButton.addEventListener('click', () => {
+            MarsInfo.contentEditable = "true";
+            MarsInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        saveButton.addEventListener('click', () => {
+            MarsInfo.contentEditable = "false";
+            MarsInfo.style.border = "none";
+            localStorage.setItem('MarsInfo', MarsInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halley's comet</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Halley's comet</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/cometpic.jpg" alt="Halley's comet">
+            </div>
+            <div class="info-box">
+                <h2>About Halley's comet</h2>
+                <p id="halleyInfo" contenteditable="false">
+                    Halley's Comet is the only known short-period comet that is consistently visible to the naked eye from Earth, appearing every 72–80 years, though with the majority of recorded apparations (25 of 30) occurring after 75–77 years. It last appeared in the inner parts of the Solar System in 1986 and will next appear in mid-2061. Officially designated 1P/Halley, it is also commonly called Comet Halley, or sometimes simply Halley. <br>
+                    Halley's periodic returns to the inner Solar System have been observed and recorded by astronomers around the world since at least 240 BC, but it was not until 1705 that the English astronomer Edmond Halley understood that these appearances were re-appearances of the same comet. As a result of this discovery, the comet is named after Halley.                </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 11 km</li>
+                    <li><strong>Orbit:</strong> 0.59 AU from the Sun at closest <br>
+                    35.1 AU from the Sun at furthest</li>
+                    <li><strong>Interesting Fact:</strong> Halley’s Comet is the most famous comet because it's visible from Earth roughly once every 76 years. It's the only naked-eye comet visible from Earth twice in a lifetime, making it a rare and memorable sight for many people.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+    <script>
+        const halleyInfo = document.getElementById('halleyInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        const savedContent = localStorage.getItem('halleyInfo');
+        if (savedContent) {
+            halleyInfo.textContent = savedContent;
+        }
+
+        editButton.addEventListener('click', () => {
+            halleyInfo.contentEditable = "true";
+            halleyInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        saveButton.addEventListener('click', () => {
+            halleyInfo.contentEditable = "false";
+            halleyInfo.style.border = "none";
+            localStorage.setItem('halleyInfo', halleyInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index2.html';
+        });
+    </script>
+</body>
+</html>

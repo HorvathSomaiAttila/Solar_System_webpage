@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(Images/star_background.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input, select, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input type="text" id="name" placeholder="Enter Your Name" required>
+        <select id="planet" required>
+            <option value="">Select Your Planet</option>
+            <option value="sun">The Sun</option>
+            <option value="mercury">Mercury</option>
+            <option value="venus">Venus</option>
+            <option value="earth">Earth</option>
+            <option value="mars">Mars</option>
+            <option value="jupiter">Jupiter</option>
+            <option value="saturn">Saturn</option>
+            <option value="uranus">Uranus</option>
+            <option value="neptune">Neptune</option>
+            <option value="comet">Comet</option>
+            <option value="haumea">Haumea</option>
+            <option value="eris">Eris</option>
+            <option value="makemake">Makemake</option>
+            <option value="sedna">Sedna</option>
+        </select>
+        <button type="button" onclick="login(event)">Login</button>
+        <p class="error" id="errorMessage"></p>
+    </div>
+    
+    <script>
+        function login(event) {
+            event.preventDefault();  
+
+            const name = document.getElementById('name').value;
+            const planet = document.getElementById('planet').value;
+
+            if (!name || !planet) {
+                document.getElementById('errorMessage').textContent = 'Please fill in both!';
+                return;
+            }
+
+            sessionStorage.setItem("user", JSON.stringify({ name, planet }));
+
+            const outerSolarSystemPlanets = ['pluto', 'comet', 'haumea', 'eris', 'makemake', 'sedna'];
+            const innerSolarSystemPlanets = ['sun', 'mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+
+            let redirectPage;
+            if (innerSolarSystemPlanets.includes(planet)) {
+                redirectPage = 'index.html';  
+            } else if (outerSolarSystemPlanets.includes(planet)) {
+                redirectPage = 'index2.html';  
+            } else {
+                document.getElementById('errorMessage').textContent = 'Érvénytelen bolygó választás!';
+                return;
+            }
+
+            window.location.href = redirectPage;
+        }
+    </script>
+</body>
+</html>

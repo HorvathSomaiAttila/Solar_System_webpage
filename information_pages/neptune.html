@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptune</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #editButton, #saveButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        #editButton:hover, #saveButton:hover {
+            background-color: #0056b3;
+        }
+
+        #editButton, #saveButton {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #editButton {
+            margin-right: 10px;
+        }
+
+        #saveButton {
+            margin-left: 10px;
+        }
+
+        #backButton {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Neptune</h1>
+    </header>
+
+    <main>
+        <section class="details">
+            <div class="image-box">
+                <img src="more_pictures/neptunepic.jpg" alt="Neptune">
+            </div>
+            <div class="info-box">
+                <h2>About Neptune</h2>
+                <p id="NeptuneInfo" contenteditable="false">
+                    Neptune is the eighth and farthest known planet from the Sun. It is the fourth-largest planet in the Solar System by diameter, the third-most-massive planet, and the densest giant planet. It is 17 times the mass of Earth. Compared to its fellow ice giant Uranus, Neptune is slightly more massive, but denser and smaller. Neptune is not visible to the unaided eye and is the only planet in the Solar System that was found from mathematical predictions derived from indirect observations rather than being initially observed by direct empirical observation, when unexpected changes in the orbit of Uranus led Alexis Bouvard to hypothesise that its orbit was subject to gravitational perturbation by an unknown planet.                </p>
+                <ul>
+                    <li><strong>Diameter:</strong> 49,244 km</li>
+                    <li><strong>Orbit:</strong> 30.07 AU from the Sun</li>
+                    <li><strong>Interesting Fact:</strong> Neptune has some of the strongest winds in the Solar System, which can reach speeds of 2,100 km/h, and it is often accompanied by massive storms.</li>
+                </ul>
+            </div>
+        </section>
+        <div class="button-container">
+            <button id="editButton">Edit</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+            <button id="backButton">Back to Main Page</button>
+        </div>
+    </main>
+    <script>
+        const NeptuneInfo = document.getElementById('NeptuneInfo');
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+
+        const savedContent = localStorage.getItem('NeptuneInfo');
+        if (savedContent) {
+            NeptuneInfo.textContent = savedContent;
+        }
+
+        editButton.addEventListener('click', () => {
+            NeptuneInfo.contentEditable = "true";
+            NeptuneInfo.style.border = "1px solid #ccc";
+            editButton.style.display = "none";
+            saveButton.style.display = "inline-block";
+        });
+
+        saveButton.addEventListener('click', () => {
+            NeptuneInfo.contentEditable = "false";
+            NeptuneInfo.style.border = "none";
+            localStorage.setItem('NeptuneInfo', NeptuneInfo.textContent);
+            editButton.style.display = "inline-block";
+            saveButton.style.display = "none";
+        });
+
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+
+    <script>
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = '../index.html';
+        });
+    </script>
+</body>
+</html>
